@@ -1,0 +1,32 @@
+.report-form-title {
+  text-align: center;
+  color: var(--hard-green-color);
+}
+
+.report-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+  padding: 1rem;
+  background-color: var(--soft-gray-color);
+  border: 2px solid;
+  border-radius: 2%;
+}
+
+.error-container {
+  height: 1rem;
+  text-align: center;
+}
+
+.error-container span {
+  font-size: 0.55rem;
+}
+
+.send-btn {
+  margin: 0.5rem 0 0 0;
+}

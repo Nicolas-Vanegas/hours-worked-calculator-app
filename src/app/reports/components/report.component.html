@@ -1,0 +1,136 @@
+<div class="report-container container">
+  <form class="report-form" (ngSubmit)="onSubmit()" [formGroup]="reportForm">
+    <h1 class="report-form-title">Reporte de Servicios brindados</h1>
+    <div>
+      <div class="error-container">
+        <span
+          class="error"
+          *ngIf="
+            reportForm.get('technicianId').hasError('required') &&
+            reportForm.get('technicianId').touched
+          "
+        >
+          Id del técnico requerido
+        </span>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Id del técnico</mat-label>
+        <input matInput formControlName="technicianId" />
+      </mat-form-field>
+    </div>
+    <div>
+      <div class="error-container">
+        <span
+          class="error"
+          *ngIf="
+            reportForm.get('serviceId').hasError('required') &&
+            reportForm.get('serviceId').touched
+          "
+        >
+          Id del servicio requerido
+        </span>
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Id del Servicio</mat-label>
+        <input matInput formControlName="serviceId" />
+      </mat-form-field>
+    </div>
+    <div>
+      <div class="error-container">
+        <span
+          class="error"
+          *ngIf="
+            reportForm.get('startDate').hasError('required') &&
+            reportForm.get('startDate').touched
+          "
+        >
+          fecha de inicio requerida
+        </span>
+        <span class="error" *ngIf="reportForm.hasError('dateError')">
+          La fecha de inicio debe ser menor que la fecha final
+        </span>
+      </div>
+      <mat-form-field class="date-input-container">
+        <input
+          matInput
+          [ngxMatDatetimePicker]="startDatePicker"
+          placeholder="Fecha de inicio del servicio"
+          [formControl]="startDateControl"
+          formControlName="startDate"
+          [min]="minDate"
+          [max]="maxDate"
+          [disabled]="disabled"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="$any(startDatePicker)"
+        ></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+          #startDatePicker
+          [showSpinners]="showSpinners"
+          [showSeconds]="showSeconds"
+          [stepHour]="stepHour"
+          [stepMinute]="stepMinute"
+          [stepSecond]="stepSecond"
+          [touchUi]="touchUi"
+          [color]="color"
+          [enableMeridian]="enableMeridian"
+          [disableMinute]="disableMinute"
+          [hideTime]="hideTime"
+        >
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+    <div>
+      <div class="error-container">
+        <span
+          class="error"
+          *ngIf="
+            reportForm.get('finishDate').hasError('required') &&
+            reportForm.get('finishDate').touched
+          "
+        >
+          fecha de finalización requerida
+        </span>
+      </div>
+      <mat-form-field class="date-input-container">
+        <input
+          matInput
+          [ngxMatDatetimePicker]="finishDatePicker"
+          placeholder="Fecha de finalización del servicio"
+          [formControl]="finishDateControl"
+          formControlName="finishDate"
+          [min]="minDate"
+          [max]="maxDate"
+          [disabled]="disabled"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="$any(finishDatePicker)"
+        ></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker
+          #finishDatePicker
+          [showSpinners]="showSpinners"
+          [showSeconds]="showSeconds"
+          [stepHour]="stepHour"
+          [stepMinute]="stepMinute"
+          [stepSecond]="stepSecond"
+          [touchUi]="touchUi"
+          [color]="color"
+          [enableMeridian]="enableMeridian"
+          [disableMinute]="disableMinute"
+          [hideTime]="hideTime"
+        >
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+    <button
+      mat-stroked-button
+      class="primary-btn send-btn"
+      type="submit"
+      [disabled]="reportForm.invalid"
+    >
+      Enviar Reporte
+    </button>
+  </form>
+</div>
